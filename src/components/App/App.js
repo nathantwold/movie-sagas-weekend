@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
 import Home from '../Home/Home.js';
+import Details from '../Details/Details';
 
 class App extends Component {
   render() {
@@ -11,14 +12,12 @@ class App extends Component {
       <div className="App">
         <Router>
           <Route exact path='/' component={Home} />
+          <Details />
+          <Route exact path='/details' component={Details} />
         </Router>
       </div>
     );
   }
 }
-
-// const mapStateToProps = (reduxStore) => {
-//   reduxStore
-// }
 
 export default connect()(App);

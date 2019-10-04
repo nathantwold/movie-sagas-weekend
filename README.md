@@ -1,3 +1,8 @@
+##### PROJECT NOTES #####
+
+Look up Transfer List at https://material-ui.com/components/transfer-list/ 
+to use in genre selector feature.
+
 # Project Name
 
 [Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md

@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 
 // GET
 router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM ${TABLE};`; // enter db query
+    let queryText = `SELECT * FROM "movies";`; 
     pool.query(queryText).then(result => {
         res.send(result.rows);
     }).catch((error) => {

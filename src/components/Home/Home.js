@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router } from 'react-router-dom';
 
-import Navbar from '../Navbar/Navbar.js';
+import List from '../List/List.js';
 
 class Home extends Component {
 
@@ -11,7 +11,7 @@ class Home extends Component {
             <div className="Home" >
             <Router>
                 <h2>In Home</h2>
-                <Navbar />
+                <List className="List" />
             </Router>
             </div>
         )

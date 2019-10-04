@@ -1,8 +1,14 @@
-.App {
-  text-align: center;
+.List {
+  flex-wrap: nowrap;
+  height: 20%;
 }
 
+/* .App {
+  text-align: center;
+} */
+
 .App-header {
+  text-align: center;
   background-color: #222;
   height: 150px;
   padding: 20px;
