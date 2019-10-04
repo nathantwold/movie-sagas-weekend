@@ -2,33 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router } from 'react-router-dom';
 
-import { makeStyles } from '@material-ui/core/styles';
-import { GridList, GridListTile, GridListTileBar } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
-    },
-    gridList: {
-        flexWrap: 'nowrap',
-        transform: 'translateZ(0)',
-    },
-    title: {
-        color: theme.palette.primary.light,
-    },
-    titleBar: {
-        background:
-            'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-    },
-}));
-
 class List extends Component {
+
+    state = {
+        movie: {
+            title: '',
+            description: ''
+        }
+    }
 
     componentDidMount() {
         this.getMovies();
@@ -38,32 +19,31 @@ class List extends Component {
         this.props.dispatch({ type: 'GET_MOVIES' })
     }
 
-    render() {
+    hover = (movie) => {
+        this.setState({
+            movie: {
+                title: movie.title,
+                description: movie.description
+            }
+        })
+    }
 
-        const classes = useStyles;
+    render() {
 
         return (
             <Router>
-                <div classes={classes.root}>
-                <GridList className={classes.gridList} cols={3} >
+                <div className="movieList">
                     {this.props.reduxStore.movies.map(movie => (
-                        <GridListTile key={movie.id}>
-                            <img src={movie.poster} alt={movie.title} />
-                            <GridListTileBar 
-                                title={movie.title}
-                                classes={{
-                                    root: classes.titleBar,
-                                    title: classes.title,
-                                }}
-                                actionIcon={
-                                    <IconButton aria-label={`star ${movie.title}`}>
-                                        <StarBorderIcon />
-                                    </IconButton>
-                                }
-                            />
-                        </GridListTile>
+                        <div className="cell" key={movie.id}>
+                            <img className="cellImage" onMouseOver={() => this.hover(movie)}
+                                onClick={() => this.props.getDetail(movie.id)} key={movie.id}
+                                src={movie.poster} alt={movie.title} />
+                        </div>
                     ))}
-                </GridList>
+                </div>
+                <div className="movieDetail">
+                    <h3>{this.state.movie.title}</h3>
+                    <h5>{this.state.movie.description}</h5>
                 </div>
             </Router>
         );

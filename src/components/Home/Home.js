@@ -6,13 +6,17 @@ import List from '../List/List.js';
 
 class Home extends Component {
 
+    getDetail = (id) => {
+        this.props.history.push('/details/' + id)
+    }
+
     render() {
         return (
             <div className="Home" >
-            <Router>
-                <h2>In Home</h2>
-                <List className="List" />
-            </Router>
+                <Router>
+                    <h2>Movie Sagas</h2>
+                    <List getDetail={this.getDetail} />
+                </Router>
             </div>
         )
     }

@@ -12,6 +12,10 @@ router.get('/', (req, res) => {
     });
 })
 
+router.get('/:id', (req, res) => {
+    
+})
+
 // DELETE
 
 // POST

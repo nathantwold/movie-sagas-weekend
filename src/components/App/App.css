@@ -1,14 +1,8 @@
-.List {
-  flex-wrap: nowrap;
-  height: 20%;
+.App {
+  text-align: center;
 }
 
-/* .App {
-  text-align: center;
-} */
-
 .App-header {
-  text-align: center;
   background-color: #222;
   height: 150px;
   padding: 20px;
@@ -21,6 +15,39 @@
 
 .App-intro {
   font-size: large;
+}
+
+.Home {    
+  min-height: 675px;
+  background-color: darkgray;
+}
+
+.movieList {
+  overflow: hidden;
+  overflow-x: scroll;
+  background-color: black;
+}
+
+.cell {
+  display: table-cell;
+  text-decoration: none;
+}
+
+.cell:hover {
+  border: 5px solid red;
+}
+
+.cellImage {
+  display: inline-flex;
+}
+
+h2 {
+  margin: 0;
+  padding: 25px;
+}
+
+h4 {
+  margin: 0;
 }
 
 @keyframes App-logo-spin {
