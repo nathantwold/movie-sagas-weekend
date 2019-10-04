@@ -3,19 +3,22 @@ import './App.css';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
+import Home from '../Home/Home.js';
+
 class App extends Component {
-  // Renders the entire app on the DOM
   render() {
     return (
       <div className="App">
-        <p>Empty Page</p>
+        <Router>
+          <Route exact path='/' component={Home} />
+        </Router>
       </div>
     );
   }
 }
 
-const mapStateToProps = (reduxStore) => {
-  reduxStore
-}
+// const mapStateToProps = (reduxStore) => {
+//   reduxStore
+// }
 
-export default connect(mapStateToProps) (App);
+export default connect()(App);
