@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
+import { HashRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
   // Renders the entire app on the DOM
@@ -12,4 +14,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (reduxStore) => {
+  reduxStore
+}
+
+export default connect(mapStateToProps) (App);
