@@ -12,18 +12,25 @@ import axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
-    yield console.log('Hi from rootSaga');
     yield takeEvery('GET_MOVIES', getMovies);
-    // yield takeEvery('GET_GENRES', getGenres);
+    yield takeEvery('GET_DETAIL', getDetail);
 }
 
 function* getMovies() {
     try {
         const response = yield axios.get('/movies');
-        console.log(response.data);
         yield put({ type: 'SET_MOVIES', payload: response.data });
     } catch (error) {
         console.log('error in GET', error);
+    }
+}
+
+function* getDetail(action) {
+    try {
+        const response = yield axios.get('/movies/' + action.payload.id)
+        yield put({ type: 'SET_GENRES', payload: response.data});
+    } catch (error) {
+        console.log('error in getDetail', error);
     }
 }
 

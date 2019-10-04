@@ -5,20 +5,26 @@ import { Link } from 'react-router-dom';
 class Details extends Component {
 
     componentDidMount = () => {
-        this.props.dispatch({ type: 'GET_MOVIES' })
+        this.getMovieDetail();
+    }
+
+    getMovieDetail = () => {
+        this.props.dispatch({ type: 'GET_DETAIL', payload: this.props.match.params })
     }
 
     render() {
         return (
             <div className="Details" >
-                {this.props.reduxStore.movies.map(movie => {
-                    if (movie.id === this.props.match.params.id) {
-                        return <div>
-                            <h2>{movie.name}</h2>
+                {this.props.reduxStore.movies.map((movie) => {
+                    if (movie.id == this.props.match.params.id) {
+                        return <div key={movie.id}>
+                            <h2>{movie.title}</h2>
+                            <img src={movie.poster} alt={movie.description} />
                             <h5>{movie.description}</h5>
-                        </div>
+                            <h4>Genre: {movie.name}</h4>
+                        </div> 
                     }
-                })}
+                }) }
                 <Link to='/'><button>Back</button></Link>
             </div>
         )
