@@ -15,16 +15,14 @@ class Details extends Component {
     render() {
         return (
             <div className="Details" >
-                {this.props.reduxStore.movies.map((movie) => {
-                    if (movie.id == this.props.match.params.id) {
-                        return <div key={movie.id}>
-                            <h2>{movie.title}</h2>
-                            <img src={movie.poster} alt={movie.description} />
-                            <h5>{movie.description}</h5>
-                            <h4>Genre: {movie.name}</h4>
-                        </div> 
-                    }
-                }) }
+                {this.props.reduxStore.genres.map(movie => 
+                    <div key={movie.id}>
+                        <h2>{movie.title}</h2>
+                        <img src={movie.poster} alt={movie.description} />
+                        <h5>{movie.description}</h5>
+                        <h4>Genre: {movie.name}</h4>
+                    </div>
+                )}
                 <Link to='/'><button>Back</button></Link>
             </div>
         )

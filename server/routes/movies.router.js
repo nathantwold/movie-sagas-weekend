@@ -13,7 +13,8 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    let queryText = `SELECT "movies".id, "movies".title, "movies".poster, "movies".description,
+    let queryText = `SELECT "movies".id, "movies".title, "movies".poster, 
+                        "movies".description,
                         "genres".name FROM "movies"
                         JOIN "movies_genres"
                         ON "movies".id = "movies_genres".movies_id

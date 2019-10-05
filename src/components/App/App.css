@@ -3,14 +3,13 @@
 }
 
 .App-header {
-  background-color: #222;
   height: 150px;
   padding: 20px;
-  color: white;
 }
 
 .App-title {
   font-size: 1.5em;
+  color: darkred;
 }
 
 .App-intro {
@@ -18,11 +17,20 @@
 }
 
 .Home {    
-  min-height: 750px;
-  background-color: darkgray;
+  background-image: url('./images/movie-theater.jpeg');
+  background-size: cover;
+  height: 650px;
 }
 
-.movieList {
+.Movie-detail {
+  color: floralwhite;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-right: 10%;
+  margin-left: 10%;
+  font-size: 16px;
+}
+
+.Movie-list {
   overflow: hidden;
   overflow-x: scroll;
   background-color: black;
@@ -39,6 +47,16 @@
 
 .cellImage {
   display: inline-flex;
+}
+
+#footer {
+  position: fixed;
+  height: 5%;
+  background-color: black;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
 }
 
 h2 {

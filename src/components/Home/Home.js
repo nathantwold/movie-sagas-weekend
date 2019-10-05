@@ -14,7 +14,7 @@ class Home extends Component {
         return (
             <div className="Home" >
                 <Router>
-                    <h2>Movie Sagas</h2>
+                    <h2 className="App-title">Movie Sagas</h2>
                     <List getDetail={this.getDetail} />
                 </Router>
             </div>

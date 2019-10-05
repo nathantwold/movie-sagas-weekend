@@ -32,7 +32,7 @@ class List extends Component {
 
         return (
             <Router>
-                <div className="movieList">
+                <div className="Movie-list">
                     {this.props.reduxStore.movies.map(movie => (
                         <div className="cell" key={movie.id}>
                             <img className="cellImage" onMouseOver={() => this.hover(movie)}
@@ -41,7 +41,7 @@ class List extends Component {
                         </div>
                     ))}
                 </div>
-                <div className="movieDetail">
+                <div className="Movie-detail">
                     <h3>{this.state.movie.title}</h3>
                     <h5>{this.state.movie.description}</h5>
                 </div>
