@@ -9,7 +9,8 @@ class Edit extends Component {
     state = {
         movie: {
             title: '',
-            description: ''
+            description: '',
+            id: this.props.match.params.id
         }
     }
 
@@ -23,6 +24,7 @@ class Edit extends Component {
 
     handleBack = (id) => {
         this.props.history.push('/details/' + id)
+        this.getMovieDetail();
     }
 
     handleChange = (event, input) => {
@@ -34,15 +36,15 @@ class Edit extends Component {
         })
     }
 
-    handleSave = (id) => {
-        // this.props.dispatch({ type: 'UPDATE_MOVIE', payload: this.state.movie })
-        // this.setState({
-        //     movie: {
-        //         title: '',
-        //         description: ''
-        //     }
-        // })
-        this.handleBack(id);
+    handleSave = (movie) => {
+        this.props.dispatch({ type: 'UPDATE_MOVIE', payload: this.state.movie })
+        this.setState({
+            movie: {
+                title: '',
+                description: ''
+            }
+        })
+        this.handleBack(movie.id);
     }
 
     render() {
@@ -69,7 +71,7 @@ class Edit extends Component {
                         <h4>Genres: {movie.genre_list}</h4>
                         <br />
                         <IconButton color='secondary' onClick={() => { this.handleBack(movie.id) }}><Cancel /></IconButton>
-                        <IconButton color='primary' onClick={() => { this.handleSave(movie.id) }}><Save /></IconButton>
+                        <IconButton color='primary' onClick={() => { this.handleSave(movie) }}><Save /></IconButton>
                     </div>
                 )}
             </div>

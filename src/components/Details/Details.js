@@ -10,7 +10,6 @@ class Details extends Component {
 
     getMovieDetail = () => {
         this.props.dispatch({ type: 'GET_DETAIL', payload: this.props.match.params })
-        console.log(this.props.match.params);
     }
 
     handleBack = () => {
