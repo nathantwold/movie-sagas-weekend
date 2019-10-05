@@ -10,6 +10,7 @@ class Details extends Component {
 
     getMovieDetail = () => {
         this.props.dispatch({ type: 'GET_DETAIL', payload: this.props.match.params })
+        console.log(this.props.match.params);
     }
 
     handleBack = () => {
@@ -23,7 +24,7 @@ class Details extends Component {
     render() {
         return (
             <div className="Details" >
-                {this.props.reduxStore.genres.map(movie =>
+                {this.props.reduxStore.detail.map(movie =>
                     <div key={movie.id}>
                         <h2>{movie.title}</h2>
                         <img src={movie.poster} alt={movie.description} />

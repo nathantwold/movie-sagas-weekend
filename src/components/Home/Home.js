@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router } from 'react-router-dom';
 
-// import List from '../List/List.js';
-
 class Home extends Component {
 
     state = {
@@ -38,7 +36,6 @@ class Home extends Component {
             <div className="Home" >
                 <Router>
                     <h1 className="App-title">Movie Sagas</h1>
-                    {/* <List getDetail={this.getDetail} /> */}
                     <div className="Movie-list">
                         {this.props.reduxStore.movies.map(movie => (
                             <div className="cell" key={movie.id}>
