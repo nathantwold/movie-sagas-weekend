@@ -28,7 +28,7 @@ function* getMovies() {
 
 function* getDetail(action) {
     try {
-        const response = yield axios.get(`/movies/${action.payload.id}`)
+        const response = yield axios.get('/movies/' + action.payload.id)
         yield put({ type: 'SET_DETAIL', payload: response.data });
     } catch (error) {
         console.log('error in getDetail', error);
@@ -39,7 +39,7 @@ function* updateMovie(action) {
     try {
         console.log(action.payload);
         let movie = action.payload;
-        yield axios.put(`/movies/${movie.title}/${movie.description}/${movie.id}`)
+        yield axios.put('/movies', movie)
         } catch (error) {
             console.log('error in update', error);
         }

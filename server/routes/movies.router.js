@@ -32,9 +32,10 @@ router.get('/:id', (req, res) => {
 // POST
 
 // UPDATE
-router.put('/:title/:description/:id', (req, res) => {
+router.put('/', (req, res) => {
     let queryText = `UPDATE "movies" SET "title" = $1, "description" = $2 WHERE "id" = $3;`;
-    pool.query(queryText, [req.params.title, req.params.description, req.params.id]).then(response => {
+    pool.query(queryText, [req.body.title, req.body.description, req.body.id])
+    .then(response => {
         res.sendStatus(200);
     }).catch((error) => {
         res.sendStatus(500);
