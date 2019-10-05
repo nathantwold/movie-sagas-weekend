@@ -14,14 +14,12 @@ router.get('/', (req, res) => {
 
 // GET call to display genre info with movies
 router.get('/:id', (req, res) => {
-    let queryText = `SELECT "movies".id, "movies".title, "movies".poster, 
-                        "movies".description,
-                        "genres".name FROM "movies"
-                        JOIN "movies_genres"
-                        ON "movies".id = "movies_genres".movies_id
-                        JOIN "genres"
-                        ON "genres".id = "movies_genres".genres_id
-                        WHERE "movies".id = $1;`;
+    let queryText = `SELECT "movies".id, "movies".title, "movies".poster, "movies".description, 
+                        string_agg("genres".name, ', ') AS genre_list FROM "movies"
+                        JOIN "movies_genres" ON "movies".id = "movies_genres".movies_id
+                        JOIN "genres" ON "genres".id = "movies_genres".genres_id        
+                        WHERE "movies".id = $1
+                        GROUP BY 1;`;
     pool.query(queryText, [req.params.id]).then(result => {
         res.send(result.rows);
     }).catch((error) => {
