@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 0;
 }
 
 .App-header {
@@ -8,7 +9,8 @@
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-family: fantasy;
+  font-size: 2.5em;
   color: darkred;
 }
 
@@ -19,7 +21,7 @@
 .Home {    
   background-image: url('./images/movie-theater.jpeg');
   background-size: cover;
-  height: 650px;
+  height: 700px;
 }
 
 .Movie-detail {
@@ -27,7 +29,6 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-right: 10%;
   margin-left: 10%;
-  font-size: 16px;
 }
 
 .Movie-list {
@@ -43,10 +44,14 @@
 
 .cell:hover {
   border: 5px solid red;
+  border-radius: 10px;
 }
 
 .cellImage {
+  height: 250px;
   display: inline-flex;
+  margin: 5px;
+  padding: 5px;
 }
 
 #footer {
@@ -59,7 +64,7 @@
   margin-bottom: 0px;
 }
 
-h2 {
+h1 {
   margin: 0;
   padding: 25px;
 }

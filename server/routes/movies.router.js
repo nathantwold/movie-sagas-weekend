@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
-// GET
+// GET call to display all movies
 router.get('/', (req, res) => {
     let queryText = `SELECT * FROM "movies";`;
     pool.query(queryText).then(result => {
@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
     });
 })
 
+// GET call to display genre info with movies
 router.get('/:id', (req, res) => {
     let queryText = `SELECT "movies".id, "movies".title, "movies".poster, 
                         "movies".description,
