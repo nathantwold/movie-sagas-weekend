@@ -43,12 +43,12 @@ The details page should have the buttons:
 
 1. Database Setup
 
-Create a database named saga_movies_weekend.
-Run the queries from database.sql on the saga_movies_weekend database.
-You will need to create the junction table between the movies and genres tables!
+- Create a database named saga_movies_weekend.
+- Run the queries from database.sql on the saga_movies_weekend database.
+- You will need to create the junction table between the movies and genres tables!
 
 2. Install Dependencies
 
-npm install.
-npm run server.
-npm run client.
+- npm install.
+- npm run server.
+- npm run client.
