@@ -40,47 +40,47 @@ function* updateMovie(action) {
         console.log(action.payload);
         let movie = action.payload;
         yield axios.put('/movies', movie)
-        } catch (error) {
-            console.log('error in update', error);
-        }
+    } catch (error) {
+        console.log('error in update', error);
     }
+}
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
-    // Used to store movies returned from the server
-    const movies = (state = [], action) => {
-        switch (action.type) {
-            case 'SET_MOVIES':
-                return action.payload;
-            default:
-                return state;
-        }
+// Used to store movies returned from the server
+const movies = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_MOVIES':
+            return action.payload;
+        default:
+            return state;
     }
+}
 
-    // Used to store the movie genres
-    const detail = (state = [], action) => {
-        switch (action.type) {
-            case 'SET_DETAIL':
-                return action.payload;
-            default:
-                return state;
-        }
+// Used to store the movie genres for selected movie
+const detail = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_DETAIL':
+            return action.payload;
+        default:
+            return state;
     }
+}
 
-    // Create one store that all components can use
-    const storeInstance = createStore(
-        combineReducers({
-            movies,
-            detail,
-        }),
-        // Add sagaMiddleware to our store
-        applyMiddleware(sagaMiddleware, logger),
-    );
+// Create one store that all components can use
+const storeInstance = createStore(
+    combineReducers({
+        movies,
+        detail,
+    }),
+    // Add sagaMiddleware to our store
+    applyMiddleware(sagaMiddleware, logger),
+);
 
-    // Pass rootSaga into our sagaMiddleware
-    sagaMiddleware.run(rootSaga);
+// Pass rootSaga into our sagaMiddleware
+sagaMiddleware.run(rootSaga);
 
-    ReactDOM.render(<Provider store={storeInstance}><App /></Provider>,
-        document.getElementById('root'));
-    registerServiceWorker();
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>,
+    document.getElementById('root'));
+registerServiceWorker();

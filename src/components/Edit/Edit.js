@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { IconButton, OutlinedInput, InputLabel, FormControl } from '@material-ui/core';
+import { IconButton, FilledInput, InputLabel, FormControl } from '@material-ui/core';
 import { Cancel, Save } from '@material-ui/icons';
 
 
@@ -11,7 +11,7 @@ class Edit extends Component {
             title: '',
             description: '',
             id: this.props.match.params.id
-        }
+        },
     }
 
     componentDidMount = () => {
@@ -23,8 +23,13 @@ class Edit extends Component {
     }
 
     handleBack = (id) => {
+        this.setState({
+            movie: {
+                title: '',
+                description: ''
+            }
+        })
         this.props.history.push('/details/' + id)
-        this.getMovieDetail();
     }
 
     handleChange = (event, input) => {
@@ -36,42 +41,38 @@ class Edit extends Component {
         })
     }
 
-    handleSave = (movie) => {
-        this.props.dispatch({ type: 'UPDATE_MOVIE', payload: this.state.movie })
-        this.setState({
-            movie: {
-                title: '',
-                description: ''
-            }
-        })
-        this.handleBack(movie.id);
+    handleSave = () => {
+        if (this.state.movie.title === '' || this.state.movie.description === '') {
+            alert('Please enter a new title AND description to save')
+        } else { this.props.dispatch({ type: 'UPDATE_MOVIE', payload: this.state.movie }) }
+        this.handleBack(this.state.movie.id);
     }
 
     render() {
         return (
             <div className="Edit" >
                 {this.props.reduxStore.detail.map(movie =>
-                    <div key={movie.id}>
+                    <div className="Form" key={movie.id}>
                         {this.state.movie.title === '' ? <h2>{movie.title}</h2> :
                             <h2>{this.state.movie.title}</h2>}
-                        <FormControl variant="outlined">
+                        <FormControl>
                             <InputLabel>Edit title</InputLabel>
-                            <OutlinedInput value={this.state.movie.title}
+                            <FilledInput
                                 onChange={(event) => this.handleChange(event, 'title')}>
-                            </OutlinedInput>
+                            </FilledInput>
                         </FormControl>
                         {this.state.movie.description === '' ? <h4>{movie.description}</h4> :
                             <h4>{this.state.movie.description}</h4>}
-                        <FormControl variant="outlined">
+                        <FormControl>
                             <InputLabel>Edit description</InputLabel>
-                            <OutlinedInput value={this.state.movie.description}
+                            <FilledInput
                                 onChange={(event) => this.handleChange(event, 'description')}>
-                            </OutlinedInput>
+                            </FilledInput>
                         </FormControl>
                         <h4>Genres: {movie.genre_list}</h4>
                         <br />
                         <IconButton color='secondary' onClick={() => { this.handleBack(movie.id) }}><Cancel /></IconButton>
-                        <IconButton color='primary' onClick={() => { this.handleSave(movie) }}><Save /></IconButton>
+                        <IconButton color='primary' onClick={this.handleSave}><Save /></IconButton>
                     </div>
                 )}
             </div>

@@ -27,7 +27,7 @@ class Details extends Component {
                     <div key={movie.id}>
                         <h2>{movie.title}</h2>
                         <img src={movie.poster} alt={movie.description} />
-                        <h5>{movie.description}</h5>
+                        <h4>{movie.description}</h4>
                         <h4>Genres: {movie.genre_list}</h4>
                         <Button color='secondary' variant='contained' onClick={this.handleBack}>Back</Button>
                         <Button color='primary' variant='contained' onClick={() => this.handleEdit(movie.id)} >Edit</Button>
