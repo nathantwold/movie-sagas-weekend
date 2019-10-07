@@ -63,15 +63,15 @@ class Edit extends Component {
                             <h2>{this.state.movie.title}</h2>}
                         <FormControl>
                             <InputLabel>Edit title</InputLabel>
-                            <FilledInput
+                            <FilledInput defaultValue={movie.title}
                                 onChange={(event) => this.handleChange(event, 'title')}>
                             </FilledInput>
                         </FormControl>
                         {this.state.movie.description === '' ? <h4>{movie.description}</h4> :
                             <h4>{this.state.movie.description}</h4>}
-                        <FormControl>
+                        <FormControl fullWidth >
                             <InputLabel>Edit description</InputLabel>
-                            <FilledInput
+                            <FilledInput defaultValue={movie.description}
                                 onChange={(event) => this.handleChange(event, 'description')}>
                             </FilledInput>
                         </FormControl>
