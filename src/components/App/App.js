@@ -15,7 +15,7 @@ class App extends Component {
           <Route exact path='/' component={Home} />
           <Route exact path='/details/:id' component={Details} />
           <Route exact path='/details/:id/edit' component={Edit} />
-          <footer id='footer'>Admin Login</footer>
+          <footer id='footer'></footer>
         </Router>
       </div>
     );

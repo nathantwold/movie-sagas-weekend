@@ -4,6 +4,7 @@ import { HashRouter as Router } from 'react-router-dom';
 
 class Home extends Component {
 
+    // local state to hold movie info to display on DOM
     state = {
         movie: {
             title: '',
@@ -11,14 +12,17 @@ class Home extends Component {
         }
     }
 
+    // run on page load
     componentDidMount() {
         this.getMovies();
     }
 
+    // populates page with movie list from redux store
     getMovies = () => {
         this.props.dispatch({ type: 'GET_MOVIES' })
     }
 
+    // set movie to local state on hover
     hover = (movie) => {
         this.setState({
             movie: {
@@ -27,6 +31,8 @@ class Home extends Component {
             }
         })
     }
+
+    // navigate to selected movie detail page
     getDetail = (id) => {
         this.props.history.push('/details/' + id)
     }

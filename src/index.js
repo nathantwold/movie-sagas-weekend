@@ -17,6 +17,7 @@ function* rootSaga() {
     yield takeEvery('UPDATE_MOVIE', updateMovie);
 }
 
+// axios call to get movie list
 function* getMovies() {
     try {
         const response = yield axios.get('/movies');
@@ -26,6 +27,7 @@ function* getMovies() {
     }
 }
 
+// axios call to get additional details for each movie
 function* getDetail(action) {
     try {
         const response = yield axios.get('/movies/' + action.payload.id)
@@ -35,6 +37,7 @@ function* getDetail(action) {
     }
 }
 
+// axios call to update title and description of movie
 function* updateMovie(action) {
     try {
         console.log(action.payload);

@@ -6,6 +6,7 @@ import { Cancel, Save } from '@material-ui/icons';
 
 class Edit extends Component {
 
+    // local state to hold input for PUT call to database
     state = {
         movie: {
             title: '',
@@ -14,14 +15,17 @@ class Edit extends Component {
         },
     }
 
+    // run on page load
     componentDidMount = () => {
         this.getMovieDetail();
     }
 
+    // populates page with selected movie from redux store
     getMovieDetail = () => {
         this.props.dispatch({ type: 'GET_DETAIL', payload: this.props.match.params })
     }
 
+    // clear local state and navigate back to movie detail page
     handleBack = (id) => {
         this.setState({
             movie: {
@@ -32,6 +36,7 @@ class Edit extends Component {
         this.props.history.push('/details/' + id)
     }
 
+    // set local state on input entry
     handleChange = (event, input) => {
         this.setState({
             movie: {
@@ -41,6 +46,7 @@ class Edit extends Component {
         })
     }
 
+    // send local state to database
     handleSave = () => {
         if (this.state.movie.title === '' || this.state.movie.description === '') {
             alert('Please enter a new title AND description to save')

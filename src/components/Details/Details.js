@@ -4,18 +4,22 @@ import { Button } from '@material-ui/core';
 
 class Details extends Component {
 
+    // run on page load
     componentDidMount = () => {
         this.getMovieDetail();
     }
 
+    // populates page with selected movie from redux store
     getMovieDetail = () => {
         this.props.dispatch({ type: 'GET_DETAIL', payload: this.props.match.params })
     }
 
+    // navigate to movie list/home page
     handleBack = () => {
         this.props.history.push('/')
     }
 
+    // navigate to edit page for selected movie
     handleEdit = (id) => {
         this.props.history.push(`/details/${id}/edit`)
     }
