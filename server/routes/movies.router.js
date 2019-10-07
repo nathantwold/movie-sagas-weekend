@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
 
 // POST
 
-// UPDATE
+// PUT call to change movie title and description
 router.put('/', (req, res) => {
     let queryText = `UPDATE "movies" SET "title" = $1, "description" = $2 WHERE "id" = $3;`;
     pool.query(queryText, [req.body.title, req.body.description, req.body.id])
