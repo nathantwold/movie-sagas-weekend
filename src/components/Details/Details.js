@@ -9,11 +9,6 @@ class Details extends Component {
         this.getMovieDetail();
     }
 
-    // update page after edit
-    componentDidUpdate = () => {
-        this.getMovieDetail();
-    }
-
     // populates page with selected movie from redux store
     getMovieDetail = () => {
         this.props.dispatch({ type: 'GET_DETAIL', payload: this.props.match.params })

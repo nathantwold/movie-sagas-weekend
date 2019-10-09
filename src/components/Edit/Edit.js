@@ -50,8 +50,10 @@ class Edit extends Component {
     handleSave = () => {
         if (this.state.movie.title === '' || this.state.movie.description === '') {
             alert('Please enter a new title AND description to save')
-        } else { this.props.dispatch({ type: 'UPDATE_MOVIE', payload: this.state.movie }) }
-        this.handleBack(this.state.movie.id);
+        } else {
+            this.props.dispatch({ type: 'UPDATE_MOVIE', payload: this.state.movie })
+            this.handleBack(this.state.movie.id);
+        }
     }
 
     render() {
@@ -69,7 +71,7 @@ class Edit extends Component {
                         </FormControl>
                         {this.state.movie.description === '' ? <h4>{movie.description}</h4> :
                             <h4>{this.state.movie.description}</h4>}
-                        <FormControl fullWidth >
+                        <FormControl fullWidth>
                             <InputLabel>Edit description</InputLabel>
                             <FilledInput defaultValue={movie.description}
                                 onChange={(event) => this.handleChange(event, 'description')}>

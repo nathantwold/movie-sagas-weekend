@@ -43,6 +43,7 @@ function* updateMovie(action) {
         console.log(action.payload);
         let movie = action.payload;
         yield axios.put('/movies', movie)
+        yield getDetail();
     } catch (error) {
         console.log('error in update', error);
     }
