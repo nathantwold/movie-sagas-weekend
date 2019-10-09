@@ -14,12 +14,15 @@ router.get('/', (req, res) => {
 
 // GET call to display genre info with movies
 router.get('/:id', (req, res) => {
-    let queryText = `SELECT "movies".id, "movies".title, "movies".poster, "movies".description, 
-                        string_agg("genres".name, ', ') AS genre_list FROM "movies"
-                        JOIN "movies_genres" ON "movies".id = "movies_genres".movies_id
-                        JOIN "genres" ON "genres".id = "movies_genres".genres_id        
-                        WHERE "movies".id = $1
-                        GROUP BY 1;`;
+    ///- use this queryText once genres have been attached to movies:
+    // let queryText = `SELECT "movies".id, "movies".title, "movies".poster, "movies".description, 
+    //                     string_agg("genres".name, ', ') AS genre_list FROM "movies"
+    //                     JOIN "movies_genres" ON "movies".id = "movies_genres".movies_id
+    //                     JOIN "genres" ON "genres".id = "movies_genres".genres_id        
+    //                     WHERE "movies".id = $1
+    //                     GROUP BY 1;`;
+    let queryText = `SELECT "movies".id, "movies".title, "movies".poster, "movies".description 
+                    FROM "movies" WHERE "movies".id = $1;`;
     pool.query(queryText, [req.params.id]).then(result => {
         res.send(result.rows);
     }).catch((error) => {
@@ -35,11 +38,11 @@ router.get('/:id', (req, res) => {
 router.put('/', (req, res) => {
     let queryText = `UPDATE "movies" SET "title" = $1, "description" = $2 WHERE "id" = $3;`;
     pool.query(queryText, [req.body.title, req.body.description, req.body.id])
-    .then(response => {
-        res.sendStatus(200);
-    }).catch((error) => {
-        res.sendStatus(500);
-    })
+        .then(response => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            res.sendStatus(500);
+        })
 })
 
 module.exports = router;
